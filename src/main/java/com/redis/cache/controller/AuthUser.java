@@ -28,6 +28,7 @@ public class AuthUser {
 
     public ResponseEntity<ApiResponse>saveUsers(@Valid @RequestBody UserModel model){
         saveUser.SaveUser(model);
+        
         ApiResponse apiResponse=ApiResponse.builder().message("success").statusCode(HttpStatus.OK.value()).build();
         return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
 
