@@ -13,6 +13,9 @@ import com.redis.cache.repo.UserRepo;
 
 // ./gradlew bootRun
 
+// ./gradlew dependencies
+
+
 @Service
 public class SaveUserImpl  implements SaveUser{
 
