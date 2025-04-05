@@ -26,7 +26,7 @@ public SaveUserImpl(UserRepo userRepo){
 }
 
     @Override
-    public void SaveUser(UserModel model) {
+    public void SaveUsers(UserModel model) {
       userRepo.save(model);
     }
 

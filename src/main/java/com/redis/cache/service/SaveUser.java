@@ -4,6 +4,6 @@ import com.redis.cache.model.UserModel;
 
 public interface SaveUser {
 
-     void SaveUser(UserModel model);
+     void SaveUsers(UserModel model);
 
 }
