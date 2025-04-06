@@ -1,5 +1,9 @@
 package com.redis.cache.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.redis.cache.model.UserModel;
@@ -28,6 +32,14 @@ public SaveUserImpl(UserRepo userRepo){
     @Override
     public void SaveUsers(UserModel model) {
       userRepo.save(model);
+    }
+
+    @Override
+    @Cacheable(value = "userCache", key = "#userId")
+    public List<UserModel> getAllUser() {
+      List<UserModel>list=userRepo.findAll();
+
+      return list.isEmpty()? new ArrayList<>(): list;
     }
 
 }

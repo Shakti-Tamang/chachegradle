@@ -1,8 +1,12 @@
 package com.redis.cache.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +30,7 @@ public class AuthUser {
     }
 
 
+      @PostMapping("/saveUser")
     public ResponseEntity<ApiResponse>saveUsers(@Valid @RequestBody UserModel model){
         saveUser.SaveUsers(model);
         
@@ -33,6 +38,20 @@ public class AuthUser {
         return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
 
     }
+
+
+    @GetMapping("getAll")
+
+    public ResponseEntity<ApiResponse> getAllUsers(){
+
+        List<UserModel> list=saveUser.getAllUser();
+
+
+        ApiResponse apiResponse= ApiResponse.<UserModel> builder().message("success").statusCode(HttpStatus.OK.value()).dataList(list).build();
+        return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
+
+    }
+
 
 
     
